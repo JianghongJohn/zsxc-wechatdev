@@ -1,21 +1,74 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container{
+  background: #eee;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.form-container{
+  flex: 1;
+  overflow: auto;
+  width: 100%;
+  font-size:36rpx;
 }
-
-.userinfo-nickname {
+.search-btn{
+  width: 100%;
+  background: #00b7ee;
+  color:#fff;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.form-body{
+  background: #fff;
+  margin: 30rpx 0;
+}
+.form-item{
+  display:flex;
+  padding: 20rpx 0;
+  margin: 0 20rpx;
+  border-bottom: 1px solid #ddd;
+}
+.form-item:last-of-type{
+  border-bottom:none;
+}
+.form-item label{
+  width: 150rpx;
+}
+.form-item input{
+  text-align: right;
+  flex: 1
+}
+.phcolor{  
+    color: #ddd;  
+}
+.form-result{
+  background: #fff;
+  padding: 20rpx;
+}
+.result-title{
+  border-left:4px solid #00b7ee;
+  padding-left: 20rpx;
+}
+.result-container{
+  margin: 20rpx 0;
+}
+.no-result{
+  background: #eaeaea;
+  height: 400rpx;
+  text-align: center;
+  line-height: 400rpx;
   color: #aaa;
 }
-
-.usermotto {
-  margin-top: 200px;
+.result-item{
+  padding:20rpx;
+  color: #aaa;
+  margin-top: 20rpx;
+  background: #eaeaea;
+}
+.item-point,
+.item-desc{
+   display:flex;
+}
+.left{
+  width: 140rpx;
+}
+.right{
+  flex: 1
 }
