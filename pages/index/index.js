@@ -1,4 +1,4 @@
-let dataRequest = require('../../utils/dataRequest.js');
+const config = require('../../utils/api.js');
 
 const app = getApp();
 Page({
@@ -8,6 +8,8 @@ Page({
     canIUse: wx.canIUse
   },
   onLoad: function () {
+
+    config.login();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
