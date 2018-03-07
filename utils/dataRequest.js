@@ -33,29 +33,30 @@ function sortData(data) {
  @return finalData
  */
 function addBaseKeyWithData(data, isLogin) {
+  
   //每次请求都需要携带三个参数token+userId+orgId+devid,登录时需要携带devId(设备id).
-  var finalData = {};
+  //finalData = {};
   //设备Id
   var devId = "jianghong";
-  finalData.devId = devId;
+  data.devId = devId;
   //时间戳
   var now = new Date();
   var timestamp = now.getTime();
-  finalData.key = "123456";
-  finalData.time = "" + timestamp;
+  data.key = "123456";
+  data.time = "" + timestamp;
   if (isLogin) {
 
     //用户信息
     let userId = "111";
     let orgId = "78";
-    finalData.userId = userId;
-    finalData.orgId = orgId;
+    data.userId = userId;
+    data.orgId = orgId;
 
   } else {
     
   }
 
-  return finalData;
+  return data;
 }
 
 //数据排序分类并MD5加密(数据，是否需要登录)

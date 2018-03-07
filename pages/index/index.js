@@ -5,7 +5,20 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse
+    canIUse: wx.canIUse,
+    buttonText:'查询',
+    formInfo:[{
+      label:"姓名",
+      placeholder:"请输入姓名",
+      type:"text",
+      class:"name"
+    },{
+      label: "身份证号",
+      placeholder: "请输入身份证号",
+      type: "idcard",
+      class: "id"
+    }],
+    results:[]
   },
   onLoad: function () {
     if (app.globalData.userInfo) {

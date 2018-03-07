@@ -1,8 +1,36 @@
 <!--index.wxml-->
 <view class="container">
   <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" 
-      bindgetuserinfo="getUserInfo"> 获取头像昵称</button>
+      bindgetuserinfo="getUserInfo">获取头像昵称</button>
   <block wx:else>
-     
+    <view class="form-container">
+      <form>
+        <view class="form-body">
+          <view wx:for="{{formInfo}}" class="form-item">
+            <label>{{item.label}}</label>
+            <input type="{{item.type}}" placeholder-class="phcolor" placeholder="{{item.placeholder}}" class="{{item.class}}" id="{{item.class}}"/>
+          </view>
+        </view>
+      </form>
+      <view class="form-result">
+        <view class="result-title">不良信息检测</view>
+        <view wx:if="{{results.length > 0}}" class="result-container">
+          <view class="result-item" wx:for="{{results}}">
+            <view class="item-point">
+              <text class="left">命中项:</text>
+              <text class="right">{{item.point}}</text>
+            </view>
+            <view class="item-desc">
+              <text class="left">描述:</text>
+              <text class="right">{{item.desc}}</text>
+            </view>
+          </view>
+        </view>
+        <view wx:else class="result-container no-result">
+          暂无命中项
+        </view>
+      </view>       
+    </view>
+    <button form-type="submit" class="search-btn">{{buttonText}}</button>
   </block>
 </view>
