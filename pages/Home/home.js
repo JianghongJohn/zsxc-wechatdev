@@ -2,19 +2,24 @@ const Marquee = require('../../utils/marquee.js').marquee;
 const app = getApp();
 Page({
   data: {
-    imgUrls: [
-      'http://res1.age06.com/FileStore/PortalIPSForQX/V3/d6cedf78-a699-4322-8d8b-af976fc94bc1/c3d432b8-290d-4a4c-9598-187342ae4d9d/c77ab157-e2d3-4c79-b92b-167e30b76d0c.jpg',
-      'http://img.zcool.cn/community/01711b59426ca1a8012193a31e5398.gif',
-      'http://img.zcool.cn/community/01080755c1edaf32f87528a18e9840.jpg@900w_1l_2o_100sh.jpg'
-    ],
+    imgUrls: [{
+      img: '/image/1.jpg',
+      text: '如上图效果'
+    }, {
+      img: '/image/2.jpg',
+      text: '如上图效果很好实时面签'
+    }, {
+      img: '/image/3.jpg',
+      text: '行业视频效果广告'
+    }],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    buttons:[
+    buttons: [
       {
-        img:'/image/首页 保险.png',
-        text:'保险'
+        img: '/image/首页 保险.png',
+        text: '保险'
       },
       {
         img: '/image/首页 二手车评估.png',
@@ -28,11 +33,13 @@ Page({
         text: '车贷计算器'
       }
     ],
+    tradeTitle: '行业视频',
+    newsTitle:'热门资讯',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse
   },
-  
+
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

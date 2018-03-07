@@ -2,12 +2,15 @@
   background-color: white;
 }
 /* 轮播图 */
-.slide-image{
+.scroll-view{
   width: 100%;
-  height: 300rpx;
+}
+swiper-item image{
+  width: 100%
 }
 /* 菜单 */
 .button-container{
+  padding-top:20rpx;
   width: 100%;
   height: 160rpx;
   display: flex;
@@ -19,12 +22,12 @@
   flex-direction:column;
   align-items:center;
 }
-.buttonImage{
+.button-image{
   width: 110rpx;
   height: 110rpx;
 }
 
-.buttonTitle{
+.button-title{
   height: 56rpx;
   line-height: 56rpx;
   font-size: 30rpx;
@@ -32,35 +35,79 @@
 }
 /* 跑马灯 */
 .marquee {
-  display: block;
   width: 100%;
-  height: 40px;
-  line-height: 40px;
-  border-top-color: whitesmoke;
-  border-top-width: 0.3;
-  border-top-style: solid;
-  border-bottom-color: whitesmoke;
-  border-bottom-width: 0.3;
-  border-bottom-style: solid;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 15rpx 0;
+  border-top: 1rpx solid #eee;
+  border-bottom: 20rpx solid #eee;
 }
 
-.marquee_box {
+.marquee-box {
   width: 100%;
   position: relative;
 }
 
-.marquee_logo {
+.marquee-logo {
   position: absolute;
-  height: 40px;
-  padding: 5px; 
+  border-right:1rpx solid #ccc;
   z-index: 100;
+  padding: 0 15rpx;
   box-sizing: border-box;
   background-color: white;
 }
-.marquee_text {
+.marquee-text {
   color: #656565;
   white-space: nowrap;
   position: absolute;
-  height: 40px;
-  top: 0;
+}
+.video-container,
+.news-container{
+  width: 100%;
+  padding: 15rpx 0;
+}
+.trade-text{
+  display: flex;
+  justify-content: space-around;
+  font-size: 30rpx;
+  height:55rpx;
+  line-height:50rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.left{
+  flex: 1;
+  padding-left: 15rpx
+}
+.trade-more{
+  padding-right: 15rpx;
+  display: flex;
+  color: #bbb;
+}
+.arrow-right{
+  margin-top:18rpx;
+}
+.trade-video{
+  display: flex;
+  margin:15rpx;
+  overflow-x:scroll;
+}
+.video-item{
+  margin-right: 20rpx;
+  text-align: center;
+  font-size: 30rpx;
+  width: 260rpx;
+}
+.video-title{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  display: block; 
+}
+.video-item image{
+  width: 260rpx;
+  height: 180rpx;
+}
+.news-container{
+  border-top: 20rpx solid #ddd;
 }

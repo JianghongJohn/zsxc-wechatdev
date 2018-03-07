@@ -1,34 +1,66 @@
 <view class="container">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称</button>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" 
+      bindgetuserinfo="getUserInfo"> 获取头像昵称</button>
     <block wx:else>
-      <scroll-view class="scroll-view_H" scroll-y="true" bindscroll="scroll" style="width: 100%">
+      <scroll-view class="scroll-view" scroll-y="true" bindscroll="scroll">
         <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
                 duration="{{duration}}">
           <block wx:for="{{imgUrls}}" wx:key="*this">
             <swiper-item>
-              <image src="{{item}}" class="slide-image"/>
+              <image src="{{item.img}}" class="slide-image"/>
             </swiper-item>
           </block>
         </swiper>
       </scroll-view>
       <view class='button-container'>
-        <block wx:for="{{buttons}}">
+        <block wx:for="{{buttons}}" wx:key="button">
           <view class='button-item'>
-            <image class='buttonImage' wx:if="{{item}}" src="{{item.img}}" mode='aspectFit'></image>
-            <text class='buttonTitle'>{{item.text}}</text>
+            <image class='button-image' wx:if="{{item}}" src="{{item.img}}" mode='aspectFit'></image>
+            <text class='button-title'>{{item.text}}</text>
           </view>
         </block>
       </view>
         
         <!-- 公告 -->
       <view class="marquee" wx:if="{{text}}">
-        <view class="marquee_box">
-          <view class='marquee_logo'>
+        <view class="marquee-box">
+          <view class='marquee-logo'>
             <image src='/image/公告.png' mode='widthFix' style='width: 20px; height: 20px;'></image>
           </view>
-          <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px; font-size: {{size}}px;">
+          <view class="marquee-text" style="{{orientation}}:{{marqueeDistance}}px; font-size: {{size}}px;">
               {{text}}
           </view>
+        </view>
+      </view>
+
+      <!-- 行业视频 -->
+      <view class="video-container">
+        <view class="trade-text">
+          <text class="left">{{tradeTitle}}</text>
+          <view class='trade-more'>
+            <text>查看更多</text>
+            <view class="arrow-right"></view>
+          </view>
+        </view>
+        <view class="trade-video">
+          <view wx:for="{{imgUrls}}" wx:key="video" class="video-item">
+            <image src="{{item.img}}"></image>
+            <text class="video-title">{{item.text}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 热门资讯 -->
+      <view class="news-container">
+        <view class="trade-text">
+          <text class="left">{{newsTitle}}</text>
+          <view class='trade-more'>
+            <text>查看更多</text>
+            <view class="arrow-right"></view>
+          </view>
+        </view>
+        <view class="trade-news">
+          
         </view>
       </view>
   </block>
