@@ -1,0 +1,36 @@
+<view class="container">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称</button>
+    <block wx:else>
+      <scroll-view class="scroll-view_H" scroll-y="true" bindscroll="scroll" style="width: 100%">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
+                duration="{{duration}}">
+          <block wx:for="{{imgUrls}}" wx:key="*this">
+            <swiper-item>
+              <image src="{{item}}" class="slide-image"/>
+            </swiper-item>
+          </block>
+        </swiper>
+      </scroll-view>
+      <view class='button-container'>
+        <block wx:for="{{buttons}}">
+          <view class='button-item'>
+            <image class='buttonImage' wx:if="{{item}}" src="{{item.img}}" mode='aspectFit'></image>
+            <text class='buttonTitle'>{{item.text}}</text>
+          </view>
+        </block>
+      </view>
+        
+        <!-- 公告 -->
+      <view class="marquee" wx:if="{{text}}">
+        <view class="marquee_box">
+          <view class='marquee_logo'>
+            <image src='/image/公告.png' mode='widthFix' style='width: 20px; height: 20px;'></image>
+          </view>
+          <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px; font-size: {{size}}px;">
+              {{text}}
+          </view>
+        </view>
+      </view>
+  </block>
+</view>
+
