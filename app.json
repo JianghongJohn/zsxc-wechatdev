@@ -1,40 +1,18 @@
 {
   "pages":[
-    "pages/Home/home",
-    "pages/Mine/mine"
+    "pages/index/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#00b7ee",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "黑名单查询",
     "navigationBarTextStyle":"white"
   },
-  
-  "tabBar": {
-  "color": "#7A7E83",
-  "selectedColor": "#00b7ee",
-  "borderStyle": "black",
-  "backgroundColor": "#ffffff",
-  "list": [
-    {
-      "pagePath": "pages/Home/home",
-      "iconPath": "image/tab_home_nor.png",
-      "selectedIconPath": "image/tab_home_press.png",
-      "text": "首页"
-    },
-    {
-      "pagePath": "pages/Mine/mine",
-      "iconPath": "image/tab_my_nor.png",
-      "selectedIconPath": "image/tab_my_press.png",
-      "text": "我的"
-    }
-  ]
-},
-"networkTimeout": {
-  "request": 10000,
-  "connectSocket": 10000,
-  "uploadFile": 10000,
-  "downloadFile": 10000
-},
-"debug": true
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
 }
