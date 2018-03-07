@@ -69,12 +69,11 @@ function md5Prram(data, isLogin) {
       "time": data.time
     }
     var headerStr = sortData(header);
-
-    var body = Object.assign(data);
+    var body = JSON.parse(JSON.stringify(data)); 
     delete body["devId"];
     delete body["key"];
     delete body["time"];
-    debugger
+    // debugger
     var bodyStr = sortData(body);
     if(bodyStr.length == 0){
       finalString = headerStr;

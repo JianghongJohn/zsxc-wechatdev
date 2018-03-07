@@ -7,24 +7,24 @@ function login(){
     "account": "xiaochengxu", "pwd": "123456"
   };
   //测试数据请求的加密方法
-  var data = dataRequest.addBaseKeyWithData(baseData, false);
+  var finalData = dataRequest.addBaseKeyWithData(baseData, false);
+  var body = JSON.parse(JSON.stringify(finalData)); 
   //生成签名
-  var sign = dataRequest.md5Prram(data, true);
-  data.sign = sign;
-  let time1 = data.time;
-  let time2 = time1;
+  var sign = dataRequest.md5Prram(finalData, true);
+  body.sign = sign;
   var requestHeader = {
-    "devId": config.devId,
-    "time": time2,
-    'content-type': 'application/json', // 默认值
+    "devId": finalData.devId,
+    "time": finalData.time,
+    'Content-type': 'application/x-www-form-urlencoded',
   }
-  // delete data["devId"];
-  // delete data["key"];
-  // delete data["time"];
-debugger
+  delete body["devId"];
+  delete body["key"];
+  delete body["time"];
+  debugger;
   wx.request({
     url: config.url + "app/login",
-    data: data,
+    data: body,
+    method: "POST",
     header: requestHeader,
     success: function (res) {
       console.log(res.data)
@@ -42,20 +42,20 @@ function queryForBlack(name , cardNo) {
     "name": name, "cardNo": cardNo
   };
   //测试数据请求的加密方法
-  var data = dataRequest.addBaseKeyWithData(baseData, true);
+  var finalData = dataRequest.addBaseKeyWithData(baseData, true);
   //生成签名
-  var sign = dataRequest.md5Prram(data, true);
+  var sign = dataRequest.md5Prram(finalData, true);
   baseData.sign = sign;
 
   var requestHeader = {
-    "devId": data.devId,
-    "time": data.time,
-    'content-type': 'application/json', // 默认值
+    "content-type": "application/x-www-form-urlencoded",
+    "devId": finalData.devId,
+    "time": finalData.time,
   }
-  delete data["devId"];
-  delete data["key"];
-  delete data["time"];
-
+  delete finalData["devId"];
+  delete finalData["key"];
+  delete finalData["time"];
+debugger
   wx.request({
     url: config.url + "risk/queryForBlack",
     data: data,
