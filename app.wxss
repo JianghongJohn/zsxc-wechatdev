@@ -18,9 +18,16 @@
     color:red;
 }
 page{
-
-background-color:"f3f3f3";
-
-height:100%;
-
+  background-color:"f3f3f3";
+  height:100%;
+}
+.arrow-right{
+  width: 15rpx;
+  height: 15rpx;
+  border-top: 1rpx solid #bbb;
+  border-right: 1rpx solid #bbb;
+  transform: rotate(45deg);
+}
+.left{
+  text-align: left
 }
