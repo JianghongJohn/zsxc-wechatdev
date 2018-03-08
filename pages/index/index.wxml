@@ -19,12 +19,9 @@
               <view class="result-item" wx:for="{{results}}">
                 <view class="item-point">
                   <text class="left">命中项:</text>
-                  <text class="right">{{item.point}}</text>
+                  <text class="right">{{item}}</text>
                 </view>
-                <view class="item-desc">
-                  <text class="left">描述:</text>
-                  <text class="right">{{item.desc}}</text>
-                </view>
+                
               </view>
             </view>
             <view wx:else class="result-container no-result">

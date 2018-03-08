@@ -1,6 +1,6 @@
 let dataRequest = require('../../utils/dataRequest.js');
-
-const app = getApp();
+let api = require('../../utils/api.js');
+let app = getApp();
 Page({
   data: {
     userInfo: {},
@@ -25,15 +25,12 @@ Page({
     hiddenLoading:true
   },
   onLoad: function () {
-
     //进入自动登录一次，避免登陆过期
-    config.login();
+    
     // config.queryForBlack("jianghong","342725196409052010",function(data){
       
     // })
-
-
-
+    api.login();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -88,23 +85,36 @@ Page({
       this.setData({
         hiddenLoading: !this.data.hiddenLoading
       })
-      var formData = e.detail.value;
-      wx.request({
-        url: '',
-        data: formData,
-        header: {
-          'Content-Type': 'application/json'
-        },
-        success: function (res) {
-          if(res){
-            this.setData({
-              hiddenLoading: !this.data.hiddenLoading,
-              resultShow: !this.data.resultShow,
-              results:res.rows
-            })
-          }
+      let self = this;
+      api.queryForBlack(e.detail.value.name, e.detail.value.id,function(res){
+        self.setData({
+          hiddenLoading: !self.data.hiddenLoading
+        })
+        if (res.data.error == 1){
+          console.info(res.data)
+          self.setData({
+            results : res.data.rows
+          })
         }
-      })  
+      })
+      
+
+      // wx.request({
+      //   url: '',
+      //   data: formData,
+      //   header: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   success: function (res) {
+      //     if(res){
+      //       this.setData({
+      //         hiddenLoading: !this.data.hiddenLoading,
+      //         resultShow: !this.data.resultShow,
+      //         results:res.rows
+      //       })
+      //     }
+      //   }
+      // })  
     }
   }
 })
