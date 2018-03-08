@@ -91,7 +91,7 @@ Page({
           hiddenLoading: !self.data.hiddenLoading
         })
         if (res.data.error == 1){
-          console.info(res.data)
+          // console.info(res.data)
           self.setData({
             results : res.data.rows,
             resultShow :true

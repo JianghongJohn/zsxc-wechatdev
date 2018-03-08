@@ -5,7 +5,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#00b7ee",
-    "navigationBarTitleText": "大数据查询",
+    "navigationBarTitleText": "大数据征信",
     "navigationBarTextStyle":"white"
   },
   "networkTimeout": {
