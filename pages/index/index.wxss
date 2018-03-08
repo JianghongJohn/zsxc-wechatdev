@@ -78,6 +78,4 @@ form{
 .left{
   width: 140rpx;
 }
-.right{
-  flex: 1
-}
+
