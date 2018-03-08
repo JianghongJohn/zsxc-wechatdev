@@ -21,8 +21,13 @@ Page({
     results:[]
   },
   onLoad: function () {
-
+    //进入自动登录一次，避免登陆过期
     config.login();
+    // config.queryForBlack("jianghong","342725196409052010",function(data){
+      
+    // })
+
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
