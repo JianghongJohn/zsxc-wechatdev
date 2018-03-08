@@ -3,6 +3,7 @@ const config = require('../config');
 const dataRequest = require("dataRequest.js");
 //用户登录
 function login(){
+  
   var baseData = {
     "account": "xiaochengxu", "pwd": "123456"
   };
@@ -37,6 +38,7 @@ function login(){
  */
 
 function queryForBlack(name , cardNo ,callBack) {
+  
   var baseData = {
     "name": name, "cardNo": cardNo
   };
@@ -54,30 +56,17 @@ function queryForBlack(name , cardNo ,callBack) {
   delete body["devId"];
   delete body["key"];
   delete body["time"];
-
   wx.request({
     url: config.url + "risk/queryForBlack",
     data: body,
     method: "POST",
     header: requestHeader,
     success: function (res) {
-      console.log(res.data)
-      if (res.data.error == 1) {
-        wx.showToast({
-          title: '用户信息正常',
-          icon: 'succes',
-          duration: 1500,
-          mask: true
-        })
-      } else {
-        wx.showToast({
-          title: '用户信息异常',
-          icon: 'none',
-          duration: 1500,
-          mask: true
-        })
-      }
-      typeof (callBack) === 'function' && callBack(res.data);
+      callBack(res)
+      
+    },
+    fail(res){
+      callBack(res)
     }
   })
 }

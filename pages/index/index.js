@@ -1,6 +1,6 @@
-const config = require('../../utils/api.js');
-
-const app = getApp();
+let dataRequest = require('../../utils/dataRequest.js');
+let api = require('../../utils/api.js');
+let app = getApp();
 Page({
   data: {
     userInfo: {},
@@ -11,34 +11,32 @@ Page({
       label:"姓名",
       placeholder:"请输入姓名",
       type:"text",
-      class:"name"
+      class:"name",
+      maxlength: 10
     },{
       label: "身份证号",
       placeholder: "请输入身份证号",
       type: "idcard",
-      class: "id"
+      class: "id",
+      maxlength:18
     }],
-    results:[]
+    results:[],
+    resultShow:false,
+    hiddenLoading:true
   },
   onLoad: function () {
     //进入自动登录一次，避免登陆过期
-    config.login();
-    config.queryForBlack("jianghong","342725196409052010",function(data){
-      if(data.error == -1){
-        results = data.rows;
-        debugger
-      }
-    })
-
-
+    
+    // config.queryForBlack("jianghong","342725196409052010",function(data){
+      
+    // })
+    api.login();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
     } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
@@ -54,16 +52,69 @@ Page({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
+        },
+        fail: res=> {
+          this.setData({
+            getUserInfoFail: true
+          })
         }
       })
     }
   },
-  getUserInfo: function (e) {
-    console.log(e)
+  getUserInfo (e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  formSubmit (e){
+    if (e.detail.value.name.length == 0 ) {
+      wx.showToast({
+        title:'姓名不能为空',
+        icon:"none",
+        duration:1500
+      })
+    } else if (e.detail.value.id.length != 15 && e.detail.value.id.length != 18){
+      wx.showToast({
+        title: '身份证号格式不对',
+        icon: "none",
+        duration: 1500
+      })
+    }else{
+      this.setData({
+        hiddenLoading: !this.data.hiddenLoading
+      })
+      let self = this;
+      api.queryForBlack(e.detail.value.name, e.detail.value.id,function(res){
+        self.setData({
+          hiddenLoading: !self.data.hiddenLoading
+        })
+        if (res.data.error == 1){
+          console.info(res.data)
+          self.setData({
+            results : res.data.rows
+          })
+        }
+      })
+      
+
+      // wx.request({
+      //   url: '',
+      //   data: formData,
+      //   header: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   success: function (res) {
+      //     if(res){
+      //       this.setData({
+      //         hiddenLoading: !this.data.hiddenLoading,
+      //         resultShow: !this.data.resultShow,
+      //         results:res.rows
+      //       })
+      //     }
+      //   }
+      // })  
+    }
   }
 })
