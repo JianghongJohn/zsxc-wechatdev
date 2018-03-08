@@ -62,7 +62,7 @@ function queryForBlack(name , cardNo ,callBack) {
     header: requestHeader,
     success: function (res) {
       console.log(res.data)
-      if (res.data == 1) {
+      if (res.data.error == 1) {
         wx.showToast({
           title: '用户信息正常',
           icon: 'succes',
