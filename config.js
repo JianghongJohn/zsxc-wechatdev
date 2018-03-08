@@ -10,7 +10,8 @@ var config = {
   url:"http://183.134.110.234:18080/interface-web/",
 devId : "zhangshangxingche_xiaochengxu",
 orgId : "78",
-uId : "1180",
+// uId : "1180",
+uId : "1117",//测试环境
 key : "123456",
 };
 

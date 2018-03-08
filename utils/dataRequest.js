@@ -48,7 +48,7 @@ function addBaseKeyWithData(data, isLogin) {
     //用户信息
     let userId = config.uId;
     let orgId = config.orgId;
-    data.userId = userId;
+    data.uId = userId;
     data.orgId = orgId;
 
   } else {
