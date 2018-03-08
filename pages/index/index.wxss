@@ -46,6 +46,8 @@ form{
     color: #ddd;  
 }
 .form-result{
+  margin-top:20rpx;
+
   background: #fff;
   padding: 20rpx;
 }

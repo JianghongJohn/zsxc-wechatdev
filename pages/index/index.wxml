@@ -12,22 +12,22 @@
                 <input type="{{item.type}}" placeholder-class="phcolor" placeholder="{{item.placeholder}}" class="{{item.class}}" name="{{item.class}}" maxlength="{{item.maxlength}}"/>
               </view>
             </view>
-          </view>
-          <view class="form-result" wx:if="{{resultShow}}">
-            <view class="result-title">不良信息检测</view>
-            <view wx:if="{{results.length > 0}}" class="result-container">
-              <view class="result-item" wx:for="{{results}}">
-                <view class="item-point">
-                  <text class="left">命中项:</text>
-                  <text class="right">{{item}}</text>
+            <view class="form-result" wx:if="{{resultShow}}">
+              <view class="result-title">不良信息检测</view>
+              <view wx:if="{{results.length > 0}}" class="result-container">
+                <view class="result-item" wx:for="{{results}}">
+                  <view class="item-point">
+                    <text class="left">命中项:</text>
+                    <text class="right">{{item}}</text>
+                  </view> 
                 </view>
-                
+              </view>
+              <view wx:else class="result-container no-result">
+                  暂无命中项
               </view>
             </view>
-            <view wx:else class="result-container no-result">
-              暂无命中项
-            </view>
           </view>
+      
           <button form-type="submit" class="search-btn">{{buttonText}}</button>
         </view>
       </form>

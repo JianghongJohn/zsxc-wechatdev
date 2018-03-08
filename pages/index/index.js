@@ -93,28 +93,11 @@ Page({
         if (res.data.error == 1){
           console.info(res.data)
           self.setData({
-            results : res.data.rows
+            results : res.data.rows,
+            resultShow :true
           })
         }
       })
-      
-
-      // wx.request({
-      //   url: '',
-      //   data: formData,
-      //   header: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   success: function (res) {
-      //     if(res){
-      //       this.setData({
-      //         hiddenLoading: !this.data.hiddenLoading,
-      //         resultShow: !this.data.resultShow,
-      //         results:res.rows
-      //       })
-      //     }
-      //   }
-      // })  
     }
   }
 })
