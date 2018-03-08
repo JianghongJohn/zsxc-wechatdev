@@ -71,11 +71,12 @@ form{
   margin-top: 20rpx;
   background: #eaeaea;
 }
-.item-point,
-.item-desc{
+.item-point{
    display:flex;
 }
 .left{
   width: 140rpx;
 }
-
+.right{
+  flex: 1
+}
