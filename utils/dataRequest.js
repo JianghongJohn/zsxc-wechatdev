@@ -3,7 +3,7 @@ let config = require('../config')
 // 数据请求统一封装
 //字符串MD5加密
 function md5String(text) {
-  let md5FinalString = Md5.hexMD5(text);
+  let md5FinalString = Md5.md5(text);
   return md5FinalString;
 }
 /**
@@ -75,9 +75,9 @@ function md5Prram(data, isLogin) {
   } else {
 
   }
-  
+  console.log(finalString);
   finalString = md5String(finalString);
-  
+  console.log(finalString);
   return finalString;
 };
 

@@ -96,6 +96,12 @@ Page({
             results : res.data.rows,
             resultShow :true
           })
+        }else{
+          wx.showToast({
+            title: '查询失败',
+            icon: "none",
+            duration: 1500
+          })
         }
       })
     }

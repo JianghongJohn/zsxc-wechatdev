@@ -51,19 +51,20 @@ function queryForBlack(name , cardNo ,callBack) {
   var requestHeader = {
     "devId": finalData.devId,
     "time": finalData.time,
-    'content-type': 'application/x-www-form-urlencoded',
+    'Content-type': 'application/json',
   }
   delete body["devId"];
   delete body["key"];
   delete body["time"];
+  debugger
   wx.request({
     url: config.url + "risk/queryForBlack",
     data: body,
-    method: "POST",
+    // method: "POST",
     header: requestHeader,
     success: function (res) {
+      console.log(res.data)
       callBack(res)
-      
     },
     fail(res){
       callBack(res)
