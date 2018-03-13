@@ -69,13 +69,14 @@ Page({
     })
   },
   formSubmit (e){
+    let idReg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|[xX])$/
     if (e.detail.value.name.length == 0 ) {
       wx.showToast({
         title:'姓名不能为空',
         icon:"none",
         duration:1500
       })
-    } else if (e.detail.value.id.length != 15 && e.detail.value.id.length != 18){
+    } else if (idReg.test(e.detail.value.id) === false){
       wx.showToast({
         title: '身份证号格式不对',
         icon: "none",
